@@ -1,0 +1,82 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "aprendegit — inicio" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+        - generic [ref=e10]: aprendegit
+      - generic [ref=e12]:
+        - 'progressbar "Progreso: 0 de 13 lecciones" [ref=e13]':
+          - link "que-es-git" [ref=e14] [cursor=pointer]:
+            - /url: /lecciones/que-es-git
+          - link "tres-zonas" [ref=e16] [cursor=pointer]:
+            - /url: /lecciones/tres-zonas
+          - link "init" [ref=e18] [cursor=pointer]:
+            - /url: /lecciones/init
+          - link "add-commit" [ref=e20] [cursor=pointer]:
+            - /url: /lecciones/add-commit
+          - link "status-log" [ref=e22] [cursor=pointer]:
+            - /url: /lecciones/status-log
+          - link "gitignore" [ref=e24] [cursor=pointer]:
+            - /url: /lecciones/gitignore
+          - link "diff" [ref=e26] [cursor=pointer]:
+            - /url: /lecciones/diff
+          - link "que-es-rama" [ref=e28] [cursor=pointer]:
+            - /url: /lecciones/que-es-rama
+          - link "branch-switch" [ref=e30] [cursor=pointer]:
+            - /url: /lecciones/branch-switch
+          - link "remote" [ref=e32] [cursor=pointer]:
+            - /url: /lecciones/remote
+          - link "push" [ref=e34] [cursor=pointer]:
+            - /url: /lecciones/push
+          - link "pull-request" [ref=e36] [cursor=pointer]:
+            - /url: /lecciones/pull-request
+          - link "merge" [ref=e38] [cursor=pointer]:
+            - /url: /lecciones/merge
+        - generic [ref=e40]: 0/13 · 0%
+      - button "Cambiar a tema claro" [ref=e42] [cursor=pointer]:
+        - img [ref=e43]
+  - main [ref=e50]:
+    - generic [ref=e51]:
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - heading "git init" [level=1] [ref=e55]
+          - generic [ref=e56]:
+            - paragraph [ref=e57]: "Para que Git empiece a observar tu carpeta tienes que decírselo explícitamente. Eso se hace con `git init`."
+            - paragraph [ref=e58]: "Cuando ejecutas el comando, Git crea una carpeta oculta llamada `.git` dentro de tu proyecto. Ahí va a guardar todos los commits, las ramas y la configuración. Tú no necesitas tocar nada de esa carpeta: es asunto de Git."
+            - paragraph [ref=e59]: A partir de ese momento decimos que la carpeta es un repositorio. Acabas de abrir un álbum vacío, listo para recibir su primera foto.
+        - region "Pasos de la lección" [ref=e60]:
+          - generic [ref=e63]:
+            - generic [ref=e64]: "1"
+            - generic [ref=e65]:
+              - heading "Una sola vez" [level=3] [ref=e66]
+              - paragraph [ref=e68]: "`git init` se ejecuta una sola vez por proyecto. Si lo ejecutas de nuevo no rompe nada, simplemente Git te dice que ya estaba inicializado."
+          - generic [ref=e71]:
+            - generic [ref=e72]: "2"
+            - generic [ref=e73]:
+              - heading "Nada se mueve aún" [level=3] [ref=e74]
+              - paragraph [ref=e76]: "Después de `init`, tus archivos siguen donde estaban. Lo que cambia es que ahora Git tiene una libreta donde apuntar lo que pase con ellos."
+        - region "Reto de la lección" [ref=e77]:
+          - generic [ref=e79]:
+            - generic [ref=e81]: Reto
+            - paragraph [ref=e83]: Inicializa el repositorio en esta carpeta.
+            - button "Ver pista" [ref=e85] [cursor=pointer]
+        - navigation "Navegación entre lecciones" [ref=e86]:
+          - link "← Anterior" [ref=e88] [cursor=pointer]:
+            - /url: /lecciones/tres-zonas
+          - link "Siguiente →" [ref=e90] [cursor=pointer]:
+            - /url: /lecciones/add-commit
+      - generic [ref=e91]:
+        - generic [ref=e93]:
+          - heading "Tu repo (local)" [level=3] [ref=e94]
+          - generic [ref=e96]:
+            - img [ref=e97]
+            - paragraph [ref=e99]: Aún no has inicializado el repo. Prueba con git init.
+        - region "Terminal simulada" [ref=e100]:
+          - generic [ref=e105]: tu-amigo@aprendegit:~/proyecto
+          - log [ref=e107]:
+            - paragraph [ref=e108]: Escribe un comando para empezar. Prueba con git status.
+          - generic [ref=e109]:
+            - generic [ref=e110]: tu-amigo $
+            - textbox "Comando de terminal" [ref=e111]:
+              - /placeholder: git status

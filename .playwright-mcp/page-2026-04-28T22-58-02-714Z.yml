@@ -1,0 +1,110 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "aprendegit — inicio" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]
+        - generic [ref=e10]: aprendegit
+      - generic [ref=e12]:
+        - 'progressbar "Progreso: 0 de 13 lecciones" [ref=e13]':
+          - link "que-es-git" [ref=e14] [cursor=pointer]:
+            - /url: /lecciones/que-es-git
+          - link "tres-zonas" [ref=e16] [cursor=pointer]:
+            - /url: /lecciones/tres-zonas
+          - link "init" [ref=e18] [cursor=pointer]:
+            - /url: /lecciones/init
+          - link "add-commit" [ref=e20] [cursor=pointer]:
+            - /url: /lecciones/add-commit
+          - link "status-log" [ref=e22] [cursor=pointer]:
+            - /url: /lecciones/status-log
+          - link "gitignore" [ref=e24] [cursor=pointer]:
+            - /url: /lecciones/gitignore
+          - link "diff" [ref=e26] [cursor=pointer]:
+            - /url: /lecciones/diff
+          - link "que-es-rama" [ref=e28] [cursor=pointer]:
+            - /url: /lecciones/que-es-rama
+          - link "branch-switch" [ref=e30] [cursor=pointer]:
+            - /url: /lecciones/branch-switch
+          - link "remote" [ref=e32] [cursor=pointer]:
+            - /url: /lecciones/remote
+          - link "push" [ref=e34] [cursor=pointer]:
+            - /url: /lecciones/push
+          - link "pull-request" [ref=e36] [cursor=pointer]:
+            - /url: /lecciones/pull-request
+          - link "merge" [ref=e38] [cursor=pointer]:
+            - /url: /lecciones/merge
+        - generic [ref=e40]: 0/13 · 0%
+      - button "Cambiar a tema claro" [ref=e42] [cursor=pointer]:
+        - img [ref=e43]
+  - main [ref=e50]:
+    - generic [ref=e51]:
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - heading "¿Qué es un Pull Request?" [level=1] [ref=e55]
+          - generic [ref=e56]:
+            - paragraph [ref=e57]: "Que tu rama esté en el remoto no quiere decir que esté aceptada. Sigue siendo una propuesta. El siguiente paso es pedir formalmente que se incorpore a `main`. A esa petición se le llama Pull Request (o Merge Request, según la plataforma)."
+            - paragraph [ref=e58]: "Un PR es una conversación alrededor de un cambio. Tú propones unir `feature/saludo` en `main`, escribes un título y una descripción de qué hiciste y por qué. Otra persona lo revisa, comenta, sugiere ajustes. Cuando hay luz verde, alguien pulsa Merge y la rama se funde con `main`."
+            - paragraph [ref=e59]: "Un buen título es corto y describe el cambio en presente: 'Mejora el saludo del usuario'. La descripción explica el contexto: qué cambió, por qué, cómo probarlo. No es burocracia: es un favor enorme a quien va a revisar tu código."
+            - paragraph [ref=e60]: A la derecha tienes el panel del remoto con un formulario. Redacta tu PR y envíalo.
+        - region "Pasos de la lección" [ref=e61]:
+          - generic [ref=e64]:
+            - generic [ref=e65]: "1"
+            - generic [ref=e66]:
+              - heading "Abre el formulario" [level=3] [ref=e67]
+              - paragraph [ref=e69]: Mira el panel del remoto. Tienes un campo para el título y otro para la descripción del Pull Request.
+          - generic [ref=e72]:
+            - generic [ref=e73]: "2"
+            - generic [ref=e74]:
+              - heading "Escribe con claridad" [level=3] [ref=e75]
+              - paragraph [ref=e77]: "Título: una frase corta. Descripción: 2-3 líneas que cuenten qué cambió y por qué. Cuando estés a gusto, pulsa Crear PR."
+        - region "Reto de la lección" [ref=e78]:
+          - generic [ref=e80]:
+            - generic [ref=e82]: Reto
+            - paragraph [ref=e84]: Redacta el título y la descripción del Pull Request y envíalo.
+            - button "Ver pista" [ref=e86] [cursor=pointer]
+        - navigation "Navegación entre lecciones" [ref=e87]:
+          - link "← Anterior" [ref=e89] [cursor=pointer]:
+            - /url: /lecciones/push
+          - link "Siguiente →" [ref=e91] [cursor=pointer]:
+            - /url: /lecciones/merge
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - heading "Tu repo (local)" [level=3] [ref=e95]
+            - generic [ref=e97]:
+              - img [ref=e98]
+              - paragraph [ref=e100]: Aún no has inicializado el repo. Prueba con git init.
+          - region "Repositorio remoto" [ref=e101]:
+            - generic [ref=e102]: 🐙
+            - heading "Aún no hay repo remoto" [level=3] [ref=e103]
+            - paragraph [ref=e104]: Cuando agregues un remote, aparecerá aquí como un mini GitHub.
+        - form "Crear pull request" [ref=e105]:
+          - generic [ref=e106]:
+            - heading "Abrir un pull request" [level=3] [ref=e107]
+            - paragraph [ref=e108]: Cuéntale a tu equipo qué cambios propones y por qué.
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]: De la rama
+              - combobox "De la rama" [ref=e112]:
+                - option "main" [selected]
+            - generic [ref=e113]:
+              - generic [ref=e114]: Hacia la rama
+              - combobox "Hacia la rama" [ref=e115]:
+                - option "main" [selected]
+          - generic [ref=e116]:
+            - generic [ref=e117]: Título*
+            - textbox "Título*" [ref=e118]:
+              - /placeholder: Añadir saludo en feature/saludo
+          - generic [ref=e119]:
+            - generic [ref=e120]: Descripción
+            - textbox "Descripción" [ref=e121]:
+              - /placeholder: Explica brevemente qué cambia este PR…
+          - button "Crear pull request" [ref=e123] [cursor=pointer]
+        - region "Terminal simulada" [ref=e124]:
+          - generic [ref=e129]: tu-amigo@aprendegit:~/proyecto
+          - log [ref=e131]:
+            - paragraph [ref=e132]: Escribe un comando para empezar. Prueba con git status.
+          - generic [ref=e133]:
+            - generic [ref=e134]: tu-amigo $
+            - textbox "Comando de terminal" [ref=e135]:
+              - /placeholder: git status
