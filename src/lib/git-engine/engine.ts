@@ -66,6 +66,35 @@ export function runCommand(state: GitState, raw: string): CommandResult {
     return { output: [], state };
   }
 
+  // Caso especial pedagógico: `echo "texto" >> .gitignore` añade la regla
+  // a state.gitignore Y al archivo .gitignore en workingDir. Soportamos
+  // las formas: `echo "x" >> .gitignore` y `echo x >> .gitignore`.
+  if (parsed.bin === "echo") {
+    const echoMatch = trimmed.match(
+      /^echo\s+(?:"([^"]*)"|'([^']*)'|(\S+))\s*>>\s*\.gitignore\s*$/,
+    );
+    if (echoMatch) {
+      const value = (echoMatch[1] ?? echoMatch[2] ?? echoMatch[3] ?? "").trim();
+      if (!value) {
+        return { output: [], state };
+      }
+      const existing = state.workingDir[".gitignore"] ?? "";
+      const sep = existing && !existing.endsWith("\n") ? "\n" : "";
+      const newContent = existing + sep + value + "\n";
+      const newGitignore = state.gitignore.includes(value)
+        ? state.gitignore
+        : [...state.gitignore, value];
+      return {
+        output: [],
+        state: {
+          ...state,
+          workingDir: { ...state.workingDir, ".gitignore": newContent },
+          gitignore: newGitignore,
+        },
+      };
+    }
+  }
+
   // Si el binario no es git, simulamos el shell.
   if (parsed.bin !== "git") {
     return errorResult(state, [`bash: ${parsed.bin}: command not found`]);

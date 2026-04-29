@@ -75,9 +75,10 @@ const lesson: Lesson = {
   ],
   challenge: {
     prompt: "Lee la idea: una rama es un puntero móvil. Cuando lo tengas claro, avanza para crearlas tú.",
-    successCondition: () => true,
+    successCondition: () => false,
     hint: "Una rama es solo un puntero móvil sobre la cadena de commits.",
   },
+  mode: "manual",
 };
 
 export default lesson;

@@ -36,4 +36,11 @@ export interface Lesson {
   next?: string;
   prev?: string;
   showRemote?: boolean;
+  /**
+   * "auto" (default): la lección se completa cuando `successCondition` es true.
+   * "manual": pura lectura. El alumno pulsa "Listo, lo entendí" para completarla.
+   */
+  mode?: "auto" | "manual";
+  /** Mostrar el panel "áreas de trabajo" (working dir / staging / commits). */
+  showAreas?: boolean;
 }

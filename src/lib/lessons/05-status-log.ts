@@ -56,6 +56,7 @@ const lesson: Lesson = {
       history.some((h) => h.input.startsWith("git log")),
     hint: "Dos comandos: `git status` y `git log`.",
   },
+  showAreas: true,
 };
 
 export default lesson;

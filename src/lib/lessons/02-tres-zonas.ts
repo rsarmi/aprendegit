@@ -27,9 +27,11 @@ const lesson: Lesson = {
   ],
   challenge: {
     prompt: "Identifica dónde vive `saludo.txt` ahora mismo. Cuando lo tengas, marca la lección como entendida.",
-    successCondition: () => true,
+    successCondition: () => false,
     hint: "Aún no está versionado: vive en working dir.",
   },
+  mode: "manual",
+  showAreas: true,
 };
 
 export default lesson;

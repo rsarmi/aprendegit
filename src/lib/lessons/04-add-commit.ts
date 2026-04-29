@@ -34,6 +34,7 @@ const lesson: Lesson = {
     successCondition: (state) => state.commits.length >= 1,
     hint: 'git add saludo.txt && git commit -m "primer commit"',
   },
+  showAreas: true,
 };
 
 export default lesson;

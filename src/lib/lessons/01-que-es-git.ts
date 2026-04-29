@@ -23,9 +23,10 @@ const lesson: Lesson = {
   ],
   challenge: {
     prompt: "Lee la introducción y, cuando lo tengas claro, marca la lección como entendida para avanzar.",
-    successCondition: () => true,
+    successCondition: () => false,
     hint: "No hay comandos en esta lección. Solo confirma que entiendes la idea de los snapshots.",
   },
+  mode: "manual",
 };
 
 export default lesson;

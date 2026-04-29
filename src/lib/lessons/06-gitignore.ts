@@ -55,6 +55,7 @@ const lesson: Lesson = {
       history.some((h) => h.input.startsWith("git status")),
     hint: 'echo "node_modules" >> .gitignore  →  luego  git status',
   },
+  showAreas: true,
 };
 
 export default lesson;

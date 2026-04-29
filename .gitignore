@@ -9,3 +9,5 @@ node_modules/
 .vscode
 out/
 coverage/
+.playwright-mcp/
+*.png

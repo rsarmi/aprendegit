@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Header } from "@/components/Layout/Header";
 import { LessonShell } from "@/components/Lesson/LessonShell";
 import { Terminal } from "@/components/Terminal/Terminal";
 import { CommitGraph } from "@/components/Graph/CommitGraph";
+import { AreasPanel } from "@/components/Areas/AreasPanel";
 import { RemotePanel } from "@/components/Remote/RemotePanel";
 import { PullRequestView } from "@/components/Remote/PullRequestView";
 import { PRComposer } from "@/components/Remote/PRComposer";
@@ -16,6 +17,16 @@ import { cn } from "@/lib/cn";
 
 export function LessonClient({ slug }: { slug: string }) {
   const lesson = getLesson(slug)!;
+
+  // Reset synchronously on first render of this slug, BEFORE any child reads
+  // the store. This avoids `LessonShell` reading the previous lesson's state
+  // and child components like `PRComposer` initializing with stale defaults.
+  const seededSlugRef = useRef<string | null>(null);
+  if (seededSlugRef.current !== slug) {
+    useGitStore.getState().resetTo(lesson.initialState);
+    seededSlugRef.current = slug;
+  }
+
   const git = useGitStore((s) => s.git);
   const pendingEffect = useGitStore((s) => s.pendingEffect);
   const consumeEffect = useGitStore((s) => s.consumeEffect);
@@ -120,6 +131,8 @@ export function LessonClient({ slug }: { slug: string }) {
           </div>
 
           <div className="flex flex-col gap-5">
+            {lesson.showAreas && <AreasPanel git={git} />}
+
             <div
               className={cn(
                 "grid gap-4",
@@ -151,6 +164,7 @@ export function LessonClient({ slug }: { slug: string }) {
 
             {showPRComposer && (
               <PRComposer
+                key={`${slug}:${defaultFrom}:${defaultTo}`}
                 fromBranches={fromBranchOptions}
                 toBranches={toBranchOptions}
                 defaultFromBranch={defaultFrom}

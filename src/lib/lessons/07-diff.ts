@@ -49,6 +49,7 @@ const lesson: Lesson = {
       history.some((h) => h.input.startsWith("git diff")),
     hint: "git diff",
   },
+  showAreas: true,
 };
 
 export default lesson;

@@ -34,16 +34,17 @@ export function LessonShell({ lesson, children }: LessonShellProps) {
   const [showCelebration, setShowCelebration] = useState(false);
   const fired = useRef(false);
 
-  // Reset the git store to the lesson's initial state on mount / lesson change.
+  // Reset on lesson change. Done in `LessonClient` already (synchronously
+  // before first paint), but we keep this as a safety net for direct mounts.
   useEffect(() => {
     fired.current = false;
     setCompleted(false);
     setShowCelebration(false);
-    useGitStore.getState().resetTo(lesson.initialState);
-  }, [lesson.slug, lesson.initialState]);
+  }, [lesson.slug]);
 
-  // Subscribe to the store and watch for the challenge's success condition.
+  // Subscribe only for "auto" lessons. Manual lessons complete via button.
   useEffect(() => {
+    if (lesson.mode === "manual") return;
     const unsub = useGitStore.subscribe((state) => {
       if (fired.current) return;
       try {
@@ -58,7 +59,15 @@ export function LessonShell({ lesson, children }: LessonShellProps) {
       }
     });
     return unsub;
-  }, [lesson.slug, lesson.challenge]);
+  }, [lesson.slug, lesson.challenge, lesson.mode]);
+
+  function handleManualComplete() {
+    if (fired.current) return;
+    fired.current = true;
+    setCompleted(true);
+    setShowCelebration(true);
+    useGitStore.getState().markCompleted(lesson.slug);
+  }
 
   const introParagraphs = lesson.intro.split(/\n\n+/).filter(Boolean);
 
@@ -119,6 +128,17 @@ export function LessonShell({ lesson, children }: LessonShellProps) {
           prompt={lesson.challenge.prompt}
           hint={lesson.challenge.hint}
         />
+        {lesson.mode === "manual" && !completed && (
+          <div className="mt-4 flex justify-end">
+            <Button
+              variant="primary"
+              size="md"
+              onClick={handleManualComplete}
+            >
+              Listo, lo entendí →
+            </Button>
+          </div>
+        )}
       </section>
 
       {/* Navigation */}
